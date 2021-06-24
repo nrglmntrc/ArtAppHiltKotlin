@@ -1,6 +1,6 @@
 package com.nurgulmantarci.artapphiltkotlin.api
 
-import com.nurgulmantarci.artapphiltkotlin.model.ImageResponce
+import com.nurgulmantarci.artapphiltkotlin.model.ImageResponse
 import com.nurgulmantarci.artapphiltkotlin.util.Util.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
@@ -12,5 +12,5 @@ interface RetrofitAPI {
     suspend fun  imageSearch(
         @Query("q") searchQuery: String,
         @Query("key") apiKey: String= API_KEY
-    ): Response<ImageResponce>
+    ): Response<ImageResponse>
 }
