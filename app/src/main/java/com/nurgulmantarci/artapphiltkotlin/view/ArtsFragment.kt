@@ -14,6 +14,7 @@ class ArtsFragment: Fragment(R.layout.fragment_arts) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         val binding=FragmentArtsBinding.bind(view)
         fragmentBinding=binding
 

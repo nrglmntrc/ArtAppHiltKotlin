@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
+    <TextView
+        android:id="@+id/txtMy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment"

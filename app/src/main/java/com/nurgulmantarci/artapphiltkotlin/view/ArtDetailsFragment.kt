@@ -16,6 +16,7 @@ class ArtDetailsFragment: Fragment(R.layout.fragment_art_details) {
         val binding=FragmentArtDetailsBinding.bind(view)
         fragmentBinding=binding
 
+
         binding.artImageView.setOnClickListener{
             findNavController().navigate(ArtDetailsFragmentDirections.actionArtDetailsFragmentToImageApiFragment())
         }
