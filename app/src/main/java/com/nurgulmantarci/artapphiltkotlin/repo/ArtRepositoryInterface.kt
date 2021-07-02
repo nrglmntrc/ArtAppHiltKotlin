@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import com.nurgulmantarci.artapphiltkotlin.model.ImageResponse
 import com.nurgulmantarci.artapphiltkotlin.roomdb.Art
 import com.nurgulmantarci.artapphiltkotlin.util.Resource
+import dagger.Provides
+
+
 
 interface ArtRepositoryInterface {
 

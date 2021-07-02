@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nurgulmantarci.artapphiltkotlin.model.ImageResponse
 import com.nurgulmantarci.artapphiltkotlin.repo.ArtRepositoryInterface
 import com.nurgulmantarci.artapphiltkotlin.roomdb.Art
 import com.nurgulmantarci.artapphiltkotlin.util.Resource
@@ -55,5 +56,24 @@ class ArtDetailViewModel @Inject constructor(
     fun insertArt(art: Art) =viewModelScope.launch {
         repository.insertArt(art)
     }
+
+    private val images= MutableLiveData<Resource<ImageResponse>>()
+    val imageList : LiveData<Resource<ImageResponse>> get() = images
+
+
+
+    fun searchForImage(searchString: String){
+        if(searchString.isEmpty()){
+            return
+        }
+
+        images.value = Resource.loading(null)
+        viewModelScope.launch {
+            val response=repository.searchImage(searchString)
+            images.value=response
+        }
+    }
+
+
 
 }

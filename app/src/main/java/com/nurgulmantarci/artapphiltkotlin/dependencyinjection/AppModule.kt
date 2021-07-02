@@ -2,7 +2,13 @@ package com.nurgulmantarci.artapphiltkotlin.dependencyinjection
 
 import android.content.Context
 import androidx.room.Room
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.nurgulmantarci.artapphiltkotlin.R
 import com.nurgulmantarci.artapphiltkotlin.api.RetrofitAPI
+import com.nurgulmantarci.artapphiltkotlin.repo.ArtRepository
+import com.nurgulmantarci.artapphiltkotlin.repo.ArtRepositoryInterface
+import com.nurgulmantarci.artapphiltkotlin.roomdb.ArtDao
 import com.nurgulmantarci.artapphiltkotlin.roomdb.ArtDatabase
 import com.nurgulmantarci.artapphiltkotlin.util.Util.BASE_URL
 import dagger.Module
@@ -40,4 +46,17 @@ object AppModule {
                 .build()
                 .create(RetrofitAPI::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun injectGlide(@ApplicationContext context: Context) = Glide.with(context)
+            .setDefaultRequestOptions(
+                    RequestOptions().placeholder(R.drawable.default_image)
+                            .error(R.drawable.default_image)
+            )
+
+
+    @Singleton
+    @Provides
+    fun injectNormalRepo(dao: ArtDao, api: RetrofitAPI) = ArtRepository(dao,api) as ArtRepositoryInterface
 }
